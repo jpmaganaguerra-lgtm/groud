@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Groud — Taller bespoke de marketing</title>
+<meta name="description" content="Groud. Growth partner. Brand + Creative + Media + Data + Technology en un solo sistema.">
+<link rel="icon" href="assets/logos/groud-mark-dark.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<canvas id="grain"></canvas>
+
+<div class="cursor" id="cursor"><span id="cursor-text"></span></div>
+
+<div id="preloader">
+  <img class="pre-mark" src="assets/logos/groud-mark-light.svg" alt="Groud">
+  <div class="pre-count" id="pre-count">00%</div>
+  <div class="pre-bar"><i id="pre-bar-fill"></i></div>
+</div>
+
+<header class="site-nav">
+  <a href="#hero" class="nav-mark">
+    <img src="assets/logos/groud-mark-light.svg" alt="Groud">
+    <b>GROUD</b>
+  </a>
+  <div class="nav-right">
+    <span class="nav-tag">Taller bespoke de marketing</span>
+    <button class="menu-btn" id="menu-toggle" data-cursor="Menú">
+      <span>Menú</span>
+      <span class="bars"><i></i><i></i></span>
+    </button>
+  </div>
+</header>
+
+<nav id="menu-overlay">
+  <div class="eyebrow" style="color:var(--pink);"><i style="background:var(--pink);"></i>Índice</div>
+  <div class="menu-list">
+    <a href="#hero" class="menu-link"><small>00</small><span class="word">Groud</span></a>
+    <a href="#s-groud" class="menu-link"><small>01</small><span class="word">Quiénes somos</span></a>
+    <a href="#s-thesis" class="menu-link"><small>02</small><span class="word">Thesis</span></a>
+    <a href="#s-system" class="menu-link"><small>03</small><span class="word">System</span></a>
+    <a href="#s-camp" class="menu-link"><small>04</small><span class="word">Campaigns</span></a>
+    <a href="#s-exp" class="menu-link"><small>05</small><span class="word">Experiments</span></a>
+    <a href="#s-contact" class="menu-link"><small>06</small><span class="word">Contact</span></a>
+  </div>
+  <div class="menu-foot">
+    <a href="mailto:hola@groud.mx">hola@groud.mx</a>
+    <a href="#">Instagram</a>
+    <a href="#">LinkedIn</a>
+  </div>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="hero" class="theme-dark">
+    <img id="hero-bg-img" data-src="assets/images/hero/background.jpg" alt="">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-top-pad"></div>
+    <h1 class="hero-title disp"><span class="g-l">GROUD</span></h1>
+    <p class="hero-sub">MAKE THEM <b>LOOK.</b></p>
+    <div class="hero-bottom">
+      <p class="hero-desc">Groud existe para que las marcas crezcan más fuerte, más rápido y más lejos. No hacemos marketing. Construimos sistemas de crecimiento.</p>
+      <div class="scroll-cue"><span>Scroll</span><span class="line"><i></i></span></div>
+    </div>
+  </section>
+
+  <div class="marquee-band theme-black">
+    <div class="marquee-track">
+      <span><em>Brand</em>Creative<span></span></span>
+      <span>Media</span>
+      <span><em>Data</em></span>
+      <span>Technology</span>
+      <span><em>Brand</em>Creative<span></span></span>
+      <span>Media</span>
+      <span><em>Data</em></span>
+      <span>Technology</span>
+    </div>
+  </div>
+
+  <!-- 01 GROUD -->
+  <section id="s-groud" class="theme-light">
+    <div class="wrap">
+      <div class="eyebrow reveal"><i></i>01 — Quiénes somos</div>
+      <div class="groud-grid">
+        <div class="groud-statement disp reveal">
+          <span class="no">No somos</span> una agencia de marketing.<br>
+          Somos un <span class="yes">growth partner.</span>
+        </div>
+        <div class="groud-body reveal">
+          <p>En un mundo donde el crecimiento es la clave del éxito, Groud nace para revolucionar la forma en que las empresas escalan.</p>
+          <p>No diseñamos tácticas aisladas. Creamos ecosistemas holísticos de expansión que integran marca, creatividad, medios, datos y tecnología en un mismo sistema.</p>
+          <p>Cada marca que trabajamos merece un traje a la medida — no una plantilla. Por eso somos un taller <em>bespoke</em> de marketing, no una fábrica de contenido.</p>
+          <div class="chip-row">
+            <span class="chip">Growth system</span>
+            <span class="chip">Brand ecosystem</span>
+            <span class="chip">Taller bespoke</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 02 THESIS -->
+  <section id="s-thesis" class="theme-black">
+    <div class="wrap">
+      <div class="eyebrow reveal"><i></i>02 — Thesis</div>
+      <div class="thesis-lines">
+        <div class="tline"><span class="inner">El crecimiento</span></div>
+        <div class="tline"><span class="inner">no es una meta.</span></div>
+        <div class="tline accent"><span class="inner">Es un sistema.</span></div>
+      </div>
+      <div class="thesis-eq reveal">
+        <span class="box">Brand</span><span class="op">+</span>
+        <span class="box">Performance</span><span class="op">=</span>
+        <span class="box result">Growth</span>
+      </div>
+      <div class="orbit-wrap reveal">
+        <div class="orbit" id="orbit">
+          <div class="orbit-ring"></div>
+          <div class="orbit-ring r2"></div>
+          <div class="orbit-center">GROUD<br>SYSTEM</div>
+          <div class="orbit-node n1"><span>Brand</span></div>
+          <div class="orbit-node n2"><span>Creative</span></div>
+          <div class="orbit-node n3"><span>Media</span></div>
+          <div class="orbit-node n4"><span>Data</span></div>
+          <div class="orbit-node n5"><span>Technology</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 03 SYSTEM -->
+  <section id="s-system" class="theme-light">
+    <div class="system-pin" id="system-pin">
+      <div class="stage-bg"></div>
+      <div class="wrap system-head">
+        <div class="eyebrow"><i></i>03 — System</div>
+      </div>
+      <div class="wrap stage-panels" id="stage-panels">
+
+        <div class="stage-panel on" data-i="0">
+          <div>
+            <div class="stage-num">01 / 04 — TOFU</div>
+            <div class="stage-title disp">Awareness</div>
+            <p class="stage-desc">Que me conozcan. Construimos relevancia cultural y share of voice antes de pedir nada a cambio.</p>
+            <div class="stage-tools"><span>Brand campaigns</span><span>Social</span><span>Video</span><span>UGC</span><span>SEO</span><span>PR</span></div>
+          </div>
+        </div>
+
+        <div class="stage-panel" data-i="1">
+          <div>
+            <div class="stage-num">02 / 04 — MOFU</div>
+            <div class="stage-title disp">Consideration</div>
+            <p class="stage-desc">Que me escojan. Educamos, diferenciamos y resolvemos objeciones hasta convertir interés en intención.</p>
+            <div class="stage-tools"><span>Remarketing</span><span>Landing pages</span><span>Email</span><span>Chatbots</span><span>Case studies</span></div>
+          </div>
+        </div>
+
+        <div class="stage-panel" data-i="2">
+          <div>
+            <div class="stage-num">03 / 04 — BOFU</div>
+            <div class="stage-title disp">Conversion</div>
+            <p class="stage-desc">Que me reserven directamente. Aquí nos obsesionamos con CAC, ROAS, margen y contribución — no con vanity metrics.</p>
+            <div class="stage-tools"><span>Performance ADS</span><span>CRO</span><span>CVR</span><span>Payback</span></div>
+          </div>
+        </div>
+
+        <div class="stage-panel" data-i="3">
+          <div>
+            <div class="stage-num">04 / 04 — RETENTION</div>
+            <div class="stage-title disp">Loyalty</div>
+            <p class="stage-desc">Que me vuelvan a reservar. El funnel nunca termina en la conversión: convertimos clientes en activos de crecimiento.</p>
+            <div class="stage-tools"><span>CRM</span><span>Newsletter</span><span>Lealtad</span><span>Referral</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="stage-index">
+        <i class="on"></i><i></i><i></i><i></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 CAMPAIGNS -->
+  <section id="s-camp" class="theme-dark">
+    <div class="wrap camp-head">
+      <div class="eyebrow reveal"><i></i>04 — Campaigns</div>
+      <div class="disp reveal">No pretendemos tener un portafolio gigante. Preferimos mostrarte cómo pensamos.</div>
+    </div>
+    <div class="camp-pin" id="camp-pin">
+      <div class="camp-track" id="camp-track">
+
+        <article class="camp-card" data-campaign="0">
+          <canvas class="cvis" data-pattern="0"></canvas>
+          <img class="cvis-img" data-src="assets/images/campaigns/campaign-01.jpg" alt="">
+          <div class="cover"></div>
+          <div class="cbody">
+            <div class="camp-num">Campaign 01</div>
+            <div class="camp-title disp">El algoritmo no te ama</div>
+            <p class="camp-line">Optimizamos para máquinas. Conquistamos humanos.</p>
+            <span class="camp-tag">Entrar a la campaña →</span>
+          </div>
+        </article>
+
+        <article class="camp-card" data-campaign="1">
+          <canvas class="cvis" data-pattern="1"></canvas>
+          <img class="cvis-img" data-src="assets/images/campaigns/campaign-02.jpg" alt="">
+          <div class="cover"></div>
+          <div class="cbody">
+            <div class="camp-num">Campaign 02</div>
+            <div class="camp-title disp">Cuarto lento</div>
+            <p class="camp-line">La mejor habitación es la que nadie postea primero.</p>
+            <span class="camp-tag">Entrar a la campaña →</span>
+          </div>
+        </article>
+
+        <article class="camp-card" data-campaign="2">
+          <canvas class="cvis" data-pattern="2"></canvas>
+          <img class="cvis-img" data-src="assets/images/campaigns/campaign-03.jpg" alt="">
+          <div class="cover"></div>
+          <div class="cbody">
+            <div class="camp-num">Campaign 03</div>
+            <div class="camp-title disp">Impuesto al ruido</div>
+            <p class="camp-line">Cada marca grita. Nosotros cobramos por el silencio.</p>
+            <span class="camp-tag">Entrar a la campaña →</span>
+          </div>
+        </article>
+
+        <article class="camp-card" data-campaign="3">
+          <canvas class="cvis" data-pattern="3"></canvas>
+          <img class="cvis-img" data-src="assets/images/campaigns/campaign-04.jpg" alt="">
+          <div class="cover"></div>
+          <div class="cbody">
+            <div class="camp-num">Campaign 04</div>
+            <div class="camp-title disp">Crecer en voz alta</div>
+            <p class="camp-line">El marketing discreto no existe. Solo el olvidado.</p>
+            <span class="camp-tag">Entrar a la campaña →</span>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 05 EXPERIMENTS -->
+  <section id="s-exp" class="theme-light">
+    <div class="wrap">
+      <div class="exp-head-row">
+        <div>
+          <div class="eyebrow reveal"><i></i>05 — Experiments</div>
+          <div class="disp reveal">Probamos cosas porque la respuesta obvia suele ser aburrida.</div>
+        </div>
+        <p class="exp-note reveal">No inventamos resultados. Estas son hipótesis reales que estamos corriendo, validando o matando ahora mismo.</p>
+      </div>
+
+      <div class="exp-grid reveal">
+        <div class="exp-card">
+          <span class="exp-status testing">Testing</span>
+          <div class="exp-q">¿Y si el chatbot tuviera personalidad, no solo respuestas?</div>
+          <div class="exp-meta"><b>Test:</b> tono conversacional vs. tono corporativo en la definición de prospectos.<br><b>KPI:</b> tasa de conversión a reserva.</div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-status testing">Testing</span>
+          <div class="exp-q">GEO: ¿nos recomienda ChatGPT antes que aparecer en Google?</div>
+          <div class="exp-meta"><b>Test:</b> optimización de entidades y citabilidad para motores generativos.<br><b>KPI:</b> menciones en respuestas de IA.</div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-status validating">Validating</span>
+          <div class="exp-q">UGC pagado vs. UGC real: ¿alguien nota la diferencia?</div>
+          <div class="exp-meta"><b>Test:</b> creadores pagados vs. huéspedes reales en el mismo formato.<br><b>KPI:</b> CTR + confianza percibida.</div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-status testing">Testing</span>
+          <div class="exp-q">Newsletter quincenal vs. mensual: ¿la frecuencia mata o construye lealtad?</div>
+          <div class="exp-meta"><b>Test:</b> misma base, dos cadencias distintas.<br><b>KPI:</b> retención + tasa de baja.</div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-status killed">Killed</span>
+          <div class="exp-q">¿El precio ancla más que el descuento directo?</div>
+          <div class="exp-meta"><b>Aprendizaje:</b> el ancla funcionó solo en categorías de alta consideración. En reservas de corta estadía, el descuento directo ganó.</div>
+        </div>
+        <div class="exp-card">
+          <span class="exp-status scaling">Scaling</span>
+          <div class="exp-q">Partnerships con huéspedes cautivos: ¿la exclusividad vende más que el precio?</div>
+          <div class="exp-meta"><b>Resultado:</b> validado en dos ciclos. Ahora es parte del sistema, no un experimento.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 06 CONTACT -->
+  <section id="s-contact" class="theme-dark">
+    <div class="wrap">
+      <div class="eyebrow reveal" style="justify-content:center;"><i></i>06 — Contact<i></i></div>
+      <h2 class="contact-title reveal" id="contact-title">
+        <span class="distort">HAGAMOS</span><br>
+        <span class="distort">QUE ALGO</span><br>
+        <span class="distort">PASE.</span>
+      </h2>
+      <p class="contact-sub reveal">Cuéntanos qué quieres crecer. Nosotros construimos el sistema.</p>
+      <a href="mailto:hola@groud.mx" class="contact-mail reveal">hola@groud.mx</a>
+
+      <form class="contact-form reveal" onsubmit="return false;">
+        <div class="field"><label>Nombre</label><input type="text" required></div>
+        <div class="field"><label>Correo</label><input type="email" required></div>
+        <div class="field"><label>Cuéntanos qué quieres crecer</label><textarea rows="2" required></textarea></div>
+        <button class="form-submit" type="submit" data-cursor="Enviar">Enviar mensaje →</button>
+      </form>
+    </div>
+    <footer>
+      <span>© 2026 Groud. Taller bespoke de marketing.</span>
+      <span>Ciudad de México</span>
+      <span>Instagram — LinkedIn</span>
+    </footer>
+  </section>
+
+</main>
+
+<!-- CAMPAIGN OVERLAY -->
+<div id="camp-overlay">
+  <div class="co-close" id="co-close" data-cursor="Cerrar"><span>Cerrar</span><span class="x">×</span></div>
+  <div class="co-hero">
+    <canvas class="cvis" id="co-canvas"></canvas>
+    <img class="cvis-img" id="co-canvas-img" data-src="" alt="">
+    <div class="cover"></div>
+    <div class="co-hero-inner">
+      <div class="co-eyebrow" id="co-num">Campaign 01</div>
+      <div class="co-title disp" id="co-title">El algoritmo no te ama</div>
+    </div>
+  </div>
+  <div class="co-body">
+    <div class="co-block">
+      <h4>Insight</h4>
+      <p id="co-insight"></p>
+    </div>
+    <div class="co-block">
+      <h4>Big idea</h4>
+      <p id="co-idea"></p>
+    </div>
+    <div class="co-block">
+      <h4>Mundo visual</h4>
+      <p id="co-visual"></p>
+    </div>
+    <div class="co-block">
+      <h4>Canales</h4>
+      <div class="co-chips" id="co-channels"></div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
