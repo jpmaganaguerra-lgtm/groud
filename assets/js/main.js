@@ -140,9 +140,9 @@ function paintPattern(canvas, type){
     const h = canvas.height = canvas.offsetHeight;
     const ctx = canvas.getContext('2d');
     const palettes = [
-      ['#111310','#1c2a20','#04CE03'],
+      ['#111310','#1c2a20','#088F44'],
       ['#111310','#2a1c22','#A85A74'],
-      ['#111310','#1c2420','#04CE03'],
+      ['#111310','#1c2420','#088F44'],
       ['#111310','#241c22','#A85A74']
     ];
     const pal = palettes[type % palettes.length];
@@ -289,12 +289,14 @@ document.querySelectorAll('.net-label').forEach(btn=>{
   btn.addEventListener('blur', deactivate);
 });
 
-/* ---------- FORM FLOATING LABELS ---------- */
-document.querySelectorAll('.field input, .field textarea').forEach(el=>{
-  el.addEventListener('input', ()=>{
-    el.closest('.field').classList.toggle('filled', el.value.length>0);
-  });
-});
+/* ---------- HEADER: fondo rosa al hacer scroll ---------- */
+const siteNav = document.querySelector('.site-nav');
+function onScrollHeader(){
+  if(window.scrollY > 8) siteNav.classList.add('scrolled');
+  else siteNav.classList.remove('scrolled');
+}
+window.addEventListener('scroll', onScrollHeader, {passive:true});
+onScrollHeader();
 
 /* ---------- CONTACT DISTORT ---------- */
 document.querySelectorAll('.contact-title .distort').forEach(el=>{
@@ -357,7 +359,7 @@ function startEntrance(){
 
       /* CAMPAIGNS horizontal scroll */
       const track = document.getElementById('camp-track');
-      ScrollTrigger.create({
+      const campST = ScrollTrigger.create({
         trigger: '#s-camp',
         start: 'top top',
         end: () => '+=' + (track.scrollWidth - window.innerWidth + 200),
@@ -368,6 +370,42 @@ function startEntrance(){
           track.style.transform = `translateX(${x}px)`;
         }
       });
+
+      /* Flechas: saltan al siguiente/anterior tramo del scroll pinned */
+      const steps = document.querySelectorAll('.camp-card').length;
+      function goToCard(dir){
+        const total = campST.end - campST.start;
+        const stepSize = total / (steps - 1);
+        const current = Math.round((window.scrollY - campST.start) / stepSize);
+        const target = Math.max(0, Math.min(steps - 1, current + dir));
+        window.scrollTo({ top: campST.start + stepSize * target, behavior: 'smooth' });
+      }
+      document.getElementById('camp-prev').addEventListener('click', ()=> goToCard(-1));
+      document.getElementById('camp-next').addEventListener('click', ()=> goToCard(1));
+
+      /* Arrastre: mover el mouse/dedo horizontalmente mueve el scroll vertical 1:1 */
+      let dragging=false, dragStartX=0, dragStartScroll=0, dragMoved=false;
+      track.addEventListener('pointerdown', e=>{
+        dragging=true; dragMoved=false; dragStartX=e.clientX; dragStartScroll=window.scrollY;
+        track.classList.add('dragging');
+        track.setPointerCapture(e.pointerId);
+      });
+      track.addEventListener('pointermove', e=>{
+        if(!dragging) return;
+        const delta = dragStartX - e.clientX;
+        if(Math.abs(delta) > 6) dragMoved = true;
+        const target = Math.max(campST.start, Math.min(campST.end, dragStartScroll + delta));
+        window.scrollTo({ top: target });
+      });
+      function endDrag(){
+        dragging=false; track.classList.remove('dragging');
+        setTimeout(()=>{ dragMoved=false; }, 0);
+      }
+      track.addEventListener('pointerup', endDrag);
+      track.addEventListener('pointercancel', endDrag);
+      track.addEventListener('click', e=>{
+        if(dragMoved){ e.stopPropagation(); e.preventDefault(); }
+      }, true);
     },
     "(max-width: 760px)": function(){
       stagePanels.forEach(p=>p.classList.add('on'));
