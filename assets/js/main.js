@@ -339,6 +339,60 @@ function startEntrance(){
   const funnelSegs = gsap.utils.toArray('.funnel-seg');
   const funnelLabels = gsap.utils.toArray('.funnel-labels span');
 
+  /* CAMPAIGNS: carrusel independiente del scroll — solo flechas y arrastre, funciona en cualquier tamaño */
+  (function initCampaignSlider(){
+    const track = document.getElementById('camp-track');
+    const viewport = document.getElementById('camp-pin');
+    if(!track || !viewport) return;
+    let campX = 0;
+
+    function maxCampX(){
+      return -Math.max(0, track.scrollWidth - viewport.clientWidth);
+    }
+    function setCampX(next, animate){
+      next = Math.max(maxCampX(), Math.min(0, next));
+      campX = next;
+      gsap.killTweensOf(track);
+      if(animate){
+        gsap.to(track, { x: campX, duration: 0.65, ease: 'power3.out' });
+      } else {
+        gsap.set(track, { x: campX });
+      }
+    }
+    function cardStep(){
+      const card = track.querySelector('.camp-card');
+      const gap = 26;
+      return card ? card.getBoundingClientRect().width + gap : 400;
+    }
+    document.getElementById('camp-prev').addEventListener('click', ()=> setCampX(campX + cardStep(), true));
+    document.getElementById('camp-next').addEventListener('click', ()=> setCampX(campX - cardStep(), true));
+    window.addEventListener('resize', ()=> setCampX(campX, false));
+
+    /* Arrastre horizontal (mouse y touch vía Pointer Events) */
+    let campDragging=false, campStartPX=0, campStartX=0, campMoved=false;
+    track.addEventListener('pointerdown', e=>{
+      campDragging=true; campMoved=false; campStartPX=e.clientX; campStartX=campX;
+      track.classList.add('dragging');
+      track.setPointerCapture(e.pointerId);
+      gsap.killTweensOf(track);
+    });
+    track.addEventListener('pointermove', e=>{
+      if(!campDragging) return;
+      const delta = e.clientX - campStartPX;
+      if(Math.abs(delta) > 6) campMoved = true;
+      setCampX(campStartX + delta, false);
+    });
+    function endCampDrag(){
+      campDragging=false; track.classList.remove('dragging');
+      setTimeout(()=>{ campMoved=false; }, 0);
+    }
+    track.addEventListener('pointerup', endCampDrag);
+    track.addEventListener('pointercancel', endCampDrag);
+    track.addEventListener('click', e=>{
+      if(campMoved){ e.stopPropagation(); e.preventDefault(); }
+    }, true);
+  })();
+
   ScrollTrigger.matchMedia({
     "(min-width: 761px)": function(){
       ScrollTrigger.create({
@@ -356,56 +410,6 @@ function startEntrance(){
           funnelLabels.forEach((l,i)=> l.classList.toggle('on', i===idx));
         }
       });
-
-      /* CAMPAIGNS horizontal scroll */
-      const track = document.getElementById('camp-track');
-      const campST = ScrollTrigger.create({
-        trigger: '#s-camp',
-        start: 'top top',
-        end: () => '+=' + (track.scrollWidth - window.innerWidth + 200),
-        pin: '#camp-pin',
-        scrub: 0.6,
-        onUpdate: self=>{
-          const x = -(track.scrollWidth - window.innerWidth + 200) * self.progress;
-          track.style.transform = `translateX(${x}px)`;
-        }
-      });
-
-      /* Flechas: saltan al siguiente/anterior tramo del scroll pinned */
-      const steps = document.querySelectorAll('.camp-card').length;
-      function goToCard(dir){
-        const total = campST.end - campST.start;
-        const stepSize = total / (steps - 1);
-        const current = Math.round((window.scrollY - campST.start) / stepSize);
-        const target = Math.max(0, Math.min(steps - 1, current + dir));
-        window.scrollTo({ top: campST.start + stepSize * target, behavior: 'smooth' });
-      }
-      document.getElementById('camp-prev').addEventListener('click', ()=> goToCard(-1));
-      document.getElementById('camp-next').addEventListener('click', ()=> goToCard(1));
-
-      /* Arrastre: mover el mouse/dedo horizontalmente mueve el scroll vertical 1:1 */
-      let dragging=false, dragStartX=0, dragStartScroll=0, dragMoved=false;
-      track.addEventListener('pointerdown', e=>{
-        dragging=true; dragMoved=false; dragStartX=e.clientX; dragStartScroll=window.scrollY;
-        track.classList.add('dragging');
-        track.setPointerCapture(e.pointerId);
-      });
-      track.addEventListener('pointermove', e=>{
-        if(!dragging) return;
-        const delta = dragStartX - e.clientX;
-        if(Math.abs(delta) > 6) dragMoved = true;
-        const target = Math.max(campST.start, Math.min(campST.end, dragStartScroll + delta));
-        window.scrollTo({ top: target });
-      });
-      function endDrag(){
-        dragging=false; track.classList.remove('dragging');
-        setTimeout(()=>{ dragMoved=false; }, 0);
-      }
-      track.addEventListener('pointerup', endDrag);
-      track.addEventListener('pointercancel', endDrag);
-      track.addEventListener('click', e=>{
-        if(dragMoved){ e.stopPropagation(); e.preventDefault(); }
-      }, true);
     },
     "(max-width: 760px)": function(){
       stagePanels.forEach(p=>p.classList.add('on'));
