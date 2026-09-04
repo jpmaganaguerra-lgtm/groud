@@ -38,7 +38,7 @@ function loopCursor(){
   requestAnimationFrame(loopCursor);
 }
 loopCursor();
-document.querySelectorAll('a, button, .camp-card, input, textarea, .exp-card').forEach(el=>{
+document.querySelectorAll('a, button, .camp-card, input, textarea').forEach(el=>{
   el.addEventListener('mouseenter', ()=>{
     cursor.classList.add('big');
     cursorText.textContent = el.getAttribute('data-cursor') || (el.classList.contains('camp-card') ? 'Ver' : '');
@@ -257,22 +257,37 @@ document.getElementById('co-close').addEventListener('click', ()=>{
   document.body.classList.remove('no-scroll');
 });
 
-/* ---------- ORBIT NODE POSITIONS ---------- */
-function placeOrbit(){
-  const orbit = document.getElementById('orbit');
-  if(!orbit) return;
-  const r = orbit.offsetWidth/2;
-  const nodes = orbit.querySelectorAll('.orbit-node');
-  const angles = [-90, -18, 54, 126, 198];
-  nodes.forEach((n,i)=>{
-    const a = angles[i] * Math.PI/180;
-    const x = r + Math.cos(a)*(r*0.86);
-    const y = r + Math.sin(a)*(r*0.86);
-    n.style.left = x+'px'; n.style.top = y+'px';
-  });
-}
-placeOrbit();
-window.addEventListener('resize', placeOrbit);
+/* ---------- THESIS NETWORK: hover interaction ---------- */
+const netCaption = document.getElementById('net-caption');
+const netCaptionDefault = netCaption ? netCaption.textContent : '';
+const nodeCopy = {
+  0:'Brand — reduce fricción, aumenta confianza y permite cobrar mejores precios.',
+  1:'Creative — la diferencia entre ser visto y ser recordado.',
+  2:'Media — distribuye la idea donde realmente vive la audiencia.',
+  3:'Data — separa lo que funciona de lo que solo parece funcionar.',
+  4:'Technology — automatiza el sistema para que escale sin depender de más manos.'
+};
+document.querySelectorAll('.net-label').forEach(btn=>{
+  const i = btn.getAttribute('data-node');
+  const spoke = document.getElementById('spoke-'+i);
+  const node = document.querySelector('.net-node[data-node="'+i+'"]');
+  const activate = ()=>{
+    btn.classList.add('on');
+    if(spoke) spoke.classList.add('on');
+    if(node) node.classList.add('on');
+    if(netCaption) netCaption.textContent = nodeCopy[i] || netCaptionDefault;
+  };
+  const deactivate = ()=>{
+    btn.classList.remove('on');
+    if(spoke) spoke.classList.remove('on');
+    if(node) node.classList.remove('on');
+    if(netCaption) netCaption.textContent = netCaptionDefault;
+  };
+  btn.addEventListener('mouseenter', activate);
+  btn.addEventListener('focus', activate);
+  btn.addEventListener('mouseleave', deactivate);
+  btn.addEventListener('blur', deactivate);
+});
 
 /* ---------- FORM FLOATING LABELS ---------- */
 document.querySelectorAll('.field input, .field textarea').forEach(el=>{
@@ -319,6 +334,8 @@ function startEntrance(){
   /* SYSTEM pinned stages */
   const stagePanels = gsap.utils.toArray('.stage-panel');
   const dots = gsap.utils.toArray('.stage-index i');
+  const funnelSegs = gsap.utils.toArray('.funnel-seg');
+  const funnelLabels = gsap.utils.toArray('.funnel-labels span');
 
   ScrollTrigger.matchMedia({
     "(min-width: 761px)": function(){
@@ -333,6 +350,8 @@ function startEntrance(){
           const idx = Math.min(stagePanels.length-1, Math.floor(self.progress * stagePanels.length));
           stagePanels.forEach((p,i)=> p.classList.toggle('on', i===idx));
           dots.forEach((d,i)=> d.classList.toggle('on', i===idx));
+          funnelSegs.forEach((s,i)=> s.classList.toggle('on', i<=idx));
+          funnelLabels.forEach((l,i)=> l.classList.toggle('on', i===idx));
         }
       });
 
