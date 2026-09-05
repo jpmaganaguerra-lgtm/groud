@@ -153,21 +153,35 @@
       <div class="stage-bg"></div>
       <div class="wrap system-head">
         <div class="eyebrow"><i></i>03 — System</div>
+        <div class="system-statement">
+          <div class="tline"><span class="inner">Groud no analiza campañas de forma aislada</span></div>
+          <div class="tline"><span class="inner">por awareness o performance.</span></div>
+          <div class="tline accent"><span class="inner">Domina el funnel completo, simultáneamente.</span></div>
+        </div>
       </div>
       <div class="wrap system-body">
 
         <div class="funnel-col">
-          <svg class="funnel-svg" viewBox="0 0 220 300" preserveAspectRatio="xMidYMin meet">
-            <polygon class="funnel-seg" data-seg="0" points="6,6 214,6 178,80 42,80"/>
-            <polygon class="funnel-seg" data-seg="1" points="42,80 178,80 150,154 70,154"/>
-            <polygon class="funnel-seg" data-seg="2" points="70,154 150,154 128,228 92,228"/>
-            <polygon class="funnel-seg" data-seg="3" points="92,228 128,228 116,290 104,290"/>
+          <svg class="funnel-svg" viewBox="0 0 220 340" preserveAspectRatio="xMidYMin meet">
+            <polygon class="funnel-seg seg-tofu" data-seg="0" points="6,6 214,6 172,120 48,120"/>
+            <polygon class="funnel-seg seg-mofu" data-seg="1" points="48,120 172,120 138,230 82,230"/>
+            <polygon class="funnel-seg seg-bofu" data-seg="2" points="82,230 138,230 122,336 98,336"/>
+
+            <path id="tofu-flow" d="M110,10 L110,120"/>
+            <path id="mofu-flow" d="M110,120 L110,230"/>
+            <path id="bofu-flow" d="M110,230 L110,332"/>
+
+            <circle class="flow-dot dot-tq" r="2.6"><animateMotion dur="1.3s" begin="0s" repeatCount="indefinite"><mpath href="#tofu-flow"/></animateMotion></circle>
+            <circle class="flow-dot dot-tq" r="2.6"><animateMotion dur="1.3s" begin="0.65s" repeatCount="indefinite"><mpath href="#tofu-flow"/></animateMotion></circle>
+            <circle class="flow-dot dot-tq" r="2.6"><animateMotion dur="1.3s" begin="0.43s" repeatCount="indefinite"><mpath href="#mofu-flow"/></animateMotion></circle>
+            <circle class="flow-dot dot-tq" r="2.6"><animateMotion dur="1.3s" begin="1.08s" repeatCount="indefinite"><mpath href="#mofu-flow"/></animateMotion></circle>
+            <circle class="flow-dot dot-bofu" r="2.6"><animateMotion dur="1.3s" begin="0.86s" repeatCount="indefinite"><mpath href="#bofu-flow"/></animateMotion></circle>
+            <circle class="flow-dot dot-bofu" r="2.6"><animateMotion dur="1.3s" begin="1.51s" repeatCount="indefinite"><mpath href="#bofu-flow"/></animateMotion></circle>
           </svg>
           <div class="funnel-labels">
-            <span data-seg="0">Awareness</span>
-            <span data-seg="1">Consideration</span>
-            <span data-seg="2">Conversion</span>
-            <span data-seg="3">Loyalty</span>
+            <span data-seg="0">TOFU — Awareness</span>
+            <span data-seg="1">MOFU — Consideration</span>
+            <span data-seg="2">BOFU — Conversion</span>
           </div>
         </div>
 
@@ -175,44 +189,55 @@
 
           <div class="stage-panel on" data-i="0">
             <div>
-              <div class="stage-num">01 / 04 — TOFU</div>
+              <div class="stage-num">01 / 03 — TOFU</div>
               <div class="stage-title disp">Awareness</div>
-              <p class="stage-desc">Que me conozcan. Construimos relevancia cultural y share of voice antes de pedir nada a cambio.</p>
-              <div class="stage-tools"><span>Brand campaigns</span><span>Social</span><span>Video</span><span>UGC</span><span>SEO</span><span>PR</span></div>
+              <p class="stage-desc">Crear conocimiento, relevancia, reconocimiento, deseo, asociar la marca a códigos culturales, incrementar share of voice, crear demanda.</p>
+              <div class="stage-chips">
+                <span class="tool-chip">Brand campaigns</span><span class="tool-chip">Social</span><span class="tool-chip">Video</span>
+                <span class="tool-chip">Influencers</span><span class="tool-chip">UGC</span><span class="tool-chip">PR</span>
+                <span class="tool-chip">Partnerships</span><span class="tool-chip">Paid awareness</span><span class="tool-chip">SEO</span>
+                <span class="tool-chip">GEO</span><span class="tool-chip">Content</span>
+              </div>
             </div>
           </div>
 
           <div class="stage-panel" data-i="1">
             <div>
-              <div class="stage-num">02 / 04 — MOFU</div>
+              <div class="stage-num">02 / 03 — MOFU</div>
               <div class="stage-title disp">Consideration</div>
-              <p class="stage-desc">Que me escojan. Educamos, diferenciamos y resolvemos objeciones hasta convertir interés en intención.</p>
-              <div class="stage-tools"><span>Remarketing</span><span>Landing pages</span><span>Email</span><span>Chatbots</span><span>Case studies</span></div>
+              <p class="stage-desc">Convertir interés en intención, educar, diferenciar, construir confianza, resolver objeciones, capturar leads, crear consideración.</p>
+              <div class="stage-chips">
+                <span class="tool-chip">Remarketing</span><span class="tool-chip">Content</span><span class="tool-chip">Landing pages</span>
+                <span class="tool-chip">Lead magnets</span><span class="tool-chip">Email</span><span class="tool-chip">Reviews</span>
+                <span class="tool-chip">Testimonials</span><span class="tool-chip">UGC</span><span class="tool-chip">Comparativos</span>
+                <span class="tool-chip">Case studies</span><span class="tool-chip">Chatbots</span><span class="tool-chip">CRM</span>
+              </div>
             </div>
           </div>
 
           <div class="stage-panel" data-i="2">
             <div>
-              <div class="stage-num">03 / 04 — BOFU</div>
+              <div class="stage-num">03 / 03 — BOFU</div>
               <div class="stage-title disp">Conversion</div>
-              <p class="stage-desc">Que me reserven directamente. Aquí nos obsesionamos con CAC, ROAS, margen y contribución — no con vanity metrics.</p>
-              <div class="stage-tools"><span>Performance ADS</span><span>CRO</span><span>CVR</span><span>Payback</span></div>
-            </div>
-          </div>
-
-          <div class="stage-panel" data-i="3">
-            <div>
-              <div class="stage-num">04 / 04 — RETENTION</div>
-              <div class="stage-title disp">Loyalty</div>
-              <p class="stage-desc">Que me vuelvan a reservar. El funnel nunca termina en la conversión: convertimos clientes en activos de crecimiento.</p>
-              <div class="stage-tools"><span>CRM</span><span>Newsletter</span><span>Lealtad</span><span>Referral</span></div>
+              <p class="stage-desc">Generar la acción: compra, reserva, lead, WhatsApp, demo, cotización, registro, suscripción, llamada, visita.</p>
+              <div class="stage-chips metrics">
+                <span class="metric-tile"><span class="mt-label">CVR</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">CAC</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">CPA</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">ROAS</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">Revenue</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">Margen</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">LTV</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">Payback</span><span class="mt-count">00</span></span>
+                <span class="metric-tile"><span class="mt-label">Contribution Margin</span><span class="mt-count">00</span></span>
+              </div>
             </div>
           </div>
 
         </div>
       </div>
       <div class="stage-index">
-        <i class="on"></i><i></i><i></i><i></i>
+        <i class="on"></i><i></i><i></i>
       </div>
     </div>
   </section>
