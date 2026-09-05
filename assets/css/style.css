@@ -283,11 +283,29 @@ section{position:relative;}
 .stage-index{ position:absolute; right:clamp(20px,4vw,56px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:14px; z-index:5; }
 .stage-index i{ width:8px; height:8px; border-radius:50%; border:1px solid var(--line); display:block; transition:background .4s, border-color .4s, transform .4s; }
 .stage-index i.on{background:var(--pink); border-color:var(--pink); transform:scale(1.5);}
-.stage-panels{position:relative; flex:1; margin-top:26px;}
+
+.system-body{ display:grid; grid-template-columns:1fr; grid-template-rows:minmax(0,1fr); align-items:stretch; gap:min(6vw,64px); margin-top:22px; flex:1; min-height:0; }
+.funnel-col{ display:none; flex-direction:column; align-items:flex-start; justify-content:center; min-height:0; }
+.funnel-svg{ width:clamp(150px,15vw,230px); height:auto; overflow:visible; }
+.funnel-seg{ fill:rgba(22,33,27,0.06); stroke:var(--line); stroke-width:1.5; transition:fill .5s, stroke .5s; }
+.funnel-seg.on{ fill:var(--accent); stroke:var(--accent); filter:drop-shadow(0 0 14px rgba(8,143,68,.45)); }
+.funnel-labels{ margin-top:22px; display:flex; flex-direction:column; gap:10px; align-items:flex-start; }
+.funnel-labels span{
+  font-size:11px; letter-spacing:.1em; text-transform:uppercase; font-weight:700;
+  color:var(--ink-soft); transition:color .4s, opacity .4s; opacity:.5;
+}
+.funnel-labels span.on{ color:var(--pink); opacity:1; }
+@media(min-width:900px){
+  .system-body{ grid-template-columns:min(24vw,260px) 1fr; }
+  .funnel-col{display:flex;}
+}
+
+.stage-panels{position:relative; min-width:0; min-height:0;}
 .stage-panel{ position:absolute; inset:0; display:flex; align-items:center; opacity:0; pointer-events:none; }
+.stage-panel > div{ width:100%; min-width:0; }
 .stage-panel.on{opacity:1; pointer-events:auto;}
 .stage-num{font-family:'Unbounded'; font-size:13px; color:var(--pink); font-weight:700; letter-spacing:.1em;}
-.stage-title{font-size:clamp(38px,7vw,108px); font-weight:800; text-transform:uppercase; margin:14px 0 20px; color:var(--ink);}
+.stage-title{font-size:clamp(32px,5.4vw,88px); font-weight:800; text-transform:uppercase; margin:14px 0 20px; color:var(--ink); overflow-wrap:break-word; word-break:break-word;}
 .stage-desc{max-width:56ch; font-size:16px; line-height:1.7; color:var(--ink-soft);}
 .stage-tools{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
 .stage-tools span{ font-size:12px; border:1px solid var(--line); padding:7px 14px; border-radius:100px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink);}

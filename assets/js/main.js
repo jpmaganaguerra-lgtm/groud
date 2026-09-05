@@ -336,6 +336,8 @@ function startEntrance(){
   /* SYSTEM pinned stages */
   const stagePanels = gsap.utils.toArray('.stage-panel');
   const dots = gsap.utils.toArray('.stage-index i');
+  const funnelSegs = gsap.utils.toArray('.funnel-seg');
+  const funnelLabels = gsap.utils.toArray('.funnel-labels span');
 
   /* CAMPAIGNS: carrusel independiente del scroll — solo flechas y arrastre, funciona en cualquier tamaño */
   (function initCampaignSlider(){
@@ -404,6 +406,8 @@ function startEntrance(){
           const idx = Math.min(stagePanels.length-1, Math.floor(self.progress * stagePanels.length));
           stagePanels.forEach((p,i)=> p.classList.toggle('on', i===idx));
           dots.forEach((d,i)=> d.classList.toggle('on', i===idx));
+          funnelSegs.forEach((s,i)=> s.classList.toggle('on', i<=idx));
+          funnelLabels.forEach((l,i)=> l.classList.toggle('on', i===idx));
         }
       });
     },
