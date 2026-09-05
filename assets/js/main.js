@@ -257,15 +257,6 @@ document.getElementById('co-close').addEventListener('click', ()=>{
   document.body.classList.remove('no-scroll');
 });
 
-/* ---------- BOFU: contadores decorativos (textura de "dato en vivo", no son cifras reales) ---------- */
-document.querySelectorAll('.mt-count').forEach((el, i)=>{
-  let n = Math.floor(Math.random()*40);
-  setInterval(()=>{
-    n = (n+1) % 100;
-    el.textContent = String(n).padStart(2,'0');
-  }, 220 + i*35);
-});
-
 /* ---------- THESIS NETWORK: hover interaction ---------- */
 const netCaption = document.getElementById('net-caption');
 const netCaptionDefault = netCaption ? netCaption.textContent : '';
@@ -345,8 +336,6 @@ function startEntrance(){
   /* SYSTEM pinned stages */
   const stagePanels = gsap.utils.toArray('.stage-panel');
   const dots = gsap.utils.toArray('.stage-index i');
-  const funnelSegs = gsap.utils.toArray('.funnel-seg');
-  const funnelLabels = gsap.utils.toArray('.funnel-labels span');
 
   /* CAMPAIGNS: carrusel independiente del scroll — solo flechas y arrastre, funciona en cualquier tamaño */
   (function initCampaignSlider(){
@@ -404,11 +393,10 @@ function startEntrance(){
 
   ScrollTrigger.matchMedia({
     "(min-width: 761px)": function(){
-      let lastSystemIdx = -1;
       ScrollTrigger.create({
         trigger: '#s-system',
         start: 'top top',
-        end: '+=240%',
+        end: '+=280%',
         pin: '#system-pin',
         scrub: 0.6,
         snap: 1/(stagePanels.length-1),
@@ -416,16 +404,6 @@ function startEntrance(){
           const idx = Math.min(stagePanels.length-1, Math.floor(self.progress * stagePanels.length));
           stagePanels.forEach((p,i)=> p.classList.toggle('on', i===idx));
           dots.forEach((d,i)=> d.classList.toggle('on', i===idx));
-          funnelSegs.forEach((s,i)=> s.classList.toggle('on', i<=idx));
-          funnelLabels.forEach((l,i)=> l.classList.toggle('on', i===idx));
-          if(idx !== lastSystemIdx){
-            lastSystemIdx = idx;
-            const chips = stagePanels[idx].querySelectorAll('.tool-chip, .metric-tile');
-            gsap.fromTo(chips,
-              { opacity:0, y:14, scale:.92 },
-              { opacity:1, y:0, scale:1, duration:.5, stagger:0.045, ease:'power3.out', overwrite:true }
-            );
-          }
         }
       });
     },

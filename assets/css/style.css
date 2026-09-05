@@ -279,64 +279,18 @@ section{position:relative;}
   position:absolute; inset:0; z-index:-1;
   background: radial-gradient(60% 60% at 82% 18%, rgba(4,206,3,0.10), transparent 70%);
 }
-.system-head{padding-top:min(9vh,80px);}
-.system-statement{ margin-top:18px; max-width:52ch; }
-.system-statement .tline{ font-size:clamp(19px,2.6vw,29px); font-weight:600; padding:0; }
+.system-head{padding-top:min(10vh,90px);}
 .stage-index{ position:absolute; right:clamp(20px,4vw,56px); top:50%; transform:translateY(-50%); display:flex; flex-direction:column; gap:14px; z-index:5; }
 .stage-index i{ width:8px; height:8px; border-radius:50%; border:1px solid var(--line); display:block; transition:background .4s, border-color .4s, transform .4s; }
 .stage-index i.on{background:var(--pink); border-color:var(--pink); transform:scale(1.5);}
-
-.system-body{ display:grid; grid-template-columns:1fr; grid-template-rows:minmax(0,1fr); align-items:stretch; gap:min(6vw,64px); margin-top:18px; flex:1; min-height:0; }
-.funnel-col{ display:none; flex-direction:column; align-items:flex-start; justify-content:center; min-height:0; }
-.funnel-svg{ width:clamp(140px,14vw,210px); height:auto; overflow:visible; color:var(--line); }
-.funnel-seg{ fill:rgba(22,33,27,0.06); stroke:var(--line); stroke-width:1.5; transition:fill .5s, stroke .5s; }
-.funnel-seg.on{ fill:var(--accent); stroke:var(--accent); filter:drop-shadow(0 0 14px rgba(8,143,68,.45)); }
-.funnel-seg.seg-bofu.on{ fill:var(--pink); stroke:var(--pink); filter:drop-shadow(0 0 14px rgba(168,90,116,.5)); }
-#tofu-flow, #mofu-flow, #bofu-flow{ fill:none; stroke:none; }
-.flow-dot{ fill:var(--accent); filter:drop-shadow(0 0 2px rgba(8,143,68,.9)); }
-.flow-dot.dot-bofu{ fill:var(--pink); filter:drop-shadow(0 0 2px rgba(168,90,116,.9)); }
-.funnel-labels{ margin-top:20px; display:flex; flex-direction:column; gap:9px; align-items:flex-start; }
-.funnel-labels span{
-  font-size:11px; letter-spacing:.08em; text-transform:uppercase; font-weight:700;
-  color:var(--ink-soft); transition:color .4s, opacity .4s; opacity:.5;
-}
-.funnel-labels span.on{ color:var(--pink); opacity:1; }
-@media(min-width:900px){
-  .system-body{ grid-template-columns:min(22vw,240px) 1fr; }
-  .funnel-col{display:flex;}
-}
-
-.stage-panels{position:relative; min-width:0; min-height:0;}
+.stage-panels{position:relative; flex:1; margin-top:26px;}
 .stage-panel{ position:absolute; inset:0; display:flex; align-items:center; opacity:0; pointer-events:none; }
-.stage-panel > div{ width:100%; min-width:0; max-height:100%; overflow-y:auto; }
 .stage-panel.on{opacity:1; pointer-events:auto;}
 .stage-num{font-family:'Unbounded'; font-size:13px; color:var(--pink); font-weight:700; letter-spacing:.1em;}
-.stage-title{font-size:clamp(30px,5vw,72px); font-weight:800; text-transform:uppercase; margin:12px 0 16px; color:var(--ink); overflow-wrap:break-word; word-break:break-word;}
-.stage-desc{max-width:56ch; font-size:15px; line-height:1.65; color:var(--ink-soft);}
-
-/* TOFU / MOFU: herramientas como píldoras */
-.stage-chips{display:flex; flex-wrap:wrap; gap:9px; margin-top:22px;}
-.tool-chip{
-  font-size:12px; border:1px solid var(--line); padding:7px 14px; border-radius:100px;
-  text-transform:uppercase; letter-spacing:.06em; color:var(--ink);
-  transition:background .25s var(--ease), color .25s var(--ease), transform .25s var(--ease), border-color .25s var(--ease);
-}
-.tool-chip:hover{ background:var(--pink); border-color:var(--pink); color:var(--white); transform:translateY(-2px); }
-
-/* BOFU: grilla de datos — misma textura de "grid + gap de línea" que ya usa el sitio */
-.stage-chips.metrics{
-  display:grid; grid-template-columns:repeat(auto-fill,minmax(118px,1fr)); gap:1px;
-  background:var(--line); border:1px solid var(--line); margin-top:22px;
-}
-.metric-tile{
-  background:var(--bg); padding:13px 12px; display:flex; flex-direction:column; gap:6px;
-  transition:background .25s var(--ease);
-}
-.metric-tile:hover{ background:var(--pink); }
-.mt-label{ font-size:10.5px; letter-spacing:.07em; text-transform:uppercase; font-weight:700; color:var(--ink); transition:color .25s var(--ease); }
-.metric-tile:hover .mt-label{ color:var(--white); }
-.mt-count{ font-family:'Space Grotesk'; font-variant-numeric:tabular-nums; font-size:19px; font-weight:700; color:var(--pink); transition:color .25s var(--ease); }
-.metric-tile:hover .mt-count{ color:var(--white); }
+.stage-title{font-size:clamp(38px,7vw,108px); font-weight:800; text-transform:uppercase; margin:14px 0 20px; color:var(--ink);}
+.stage-desc{max-width:56ch; font-size:16px; line-height:1.7; color:var(--ink-soft);}
+.stage-tools{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
+.stage-tools span{ font-size:12px; border:1px solid var(--line); padding:7px 14px; border-radius:100px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink);}
 
 /* ===== 04 CAMPAIGNS ===== */
 #s-camp{border-bottom:1px solid var(--line); position:relative;}
