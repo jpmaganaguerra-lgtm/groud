@@ -304,7 +304,7 @@ section{position:relative;}
 .stage-panel > div{ width:100%; min-width:0; max-width:100%; }
 .stage-panel.on{opacity:1; pointer-events:auto;}
 .stage-num{font-family:'Unbounded'; font-size:13px; color:var(--pink); font-weight:700; letter-spacing:.1em;}
-.stage-title{font-size:clamp(28px,4.4vw,68px); font-weight:800; text-transform:uppercase; margin:14px 0 20px; color:var(--ink); overflow-wrap:break-word;}
+.stage-title{font-size:clamp(36px,5.7vw,88px); font-weight:800; text-transform:uppercase; margin:14px 0 22px; color:var(--ink); overflow-wrap:break-word;}
 .stage-desc{max-width:56ch; font-size:16px; line-height:1.7; color:var(--ink-soft);}
 .stage-tools{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px;}
 .stage-tools span{ font-size:12px; border:1px solid var(--line); padding:7px 14px; border-radius:100px; text-transform:uppercase; letter-spacing:.06em; color:var(--ink);}
