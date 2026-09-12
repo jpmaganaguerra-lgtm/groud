@@ -1,20 +1,21 @@
 # Imágenes de este pitch — Casa Filomeno
 
-Igual que en el pitch de La Casa México: reemplaza el archivo respetando el
-mismo nombre, no hay que tocar el HTML.
+Reemplaza el archivo respetando el mismo nombre, no hay que tocar el HTML.
 
 ## Archivos que puedes agregar/reemplazar aquí
 
-- `hero.jpg` — foto de portada, a pantalla completa detrás de "SUBIR DE
-  CATEGORÍA". Recomendado: el rooftop al atardecer con Bellas Artes/Catedral
-  de fondo — es el activo visual más fuerte que ya tienen. Horizontal,
-  mínimo 1800px de ancho. Si no la agregas, la portada se queda con el
-  fondo de color de marca (no se rompe nada).
+- `hero.jpg` — foto de portada, a pantalla completa detrás de "QUÉDATE."
+  Recomendado: una escena íntima y cálida (luz de mañana entrando a una
+  habitación, alguien todavía en la cama) — no una foto de catálogo del
+  edificio. Horizontal, mínimo 1800px de ancho.
 
-- `suite.jpg` — foto usada en la sección "01 — Dónde están hoy", junto a
-  las estadísticas. Recomendado: foto vertical (4:5) de una suite o studio,
-  mostrando la cocina completa o el diseño de artista. Si no existe, se
-  muestra un patrón generativo de respaldo.
+- `onemorenight.jpg` — foto de fondo de la sección "One More Night".
+  Recomendado: una maleta, una habitación, la luz de la tarde — el momento
+  justo antes de irse. Si no existe, esa sección usa el fondo de color de
+  marca (no se rompe nada).
+
+- `suite.jpg` — disponible por si se usa en el futuro para una sección de
+  habitaciones; actualmente no está conectada en el HTML de este pitch.
 
 ## Reglas rápidas
 - Nombres de archivo exactos, en minúsculas.
