@@ -75,6 +75,15 @@ document.querySelectorAll('.ph-pattern[data-pattern]').forEach(c=>{
   paintPattern(c, parseInt(c.getAttribute('data-pattern')));
 });
 
+/* ---------- LETTER REVEAL: divide el texto en letras para animarlas una por una ---------- */
+document.querySelectorAll('.letter-reveal').forEach(el=>{
+  const text = el.textContent;
+  el.innerHTML = text.split('').map(ch=>{
+    const cls = ch === '.' ? 'lr-letter is-dot' : 'lr-letter';
+    return `<span class="${cls}">${ch === ' ' ? '&nbsp;' : ch}</span>`;
+  }).join('');
+});
+
 /* ---------- REVEAL ENGINE (GSAP + ScrollTrigger, igual motor que el sitio) ---------- */
 function start(){
   if(typeof gsap === 'undefined'){
@@ -82,6 +91,8 @@ function start(){
     document.querySelectorAll('.reveal, .tline, .bar-fill, .budget-fill, .price-step-bar').forEach(el=>{
       el.classList.add('in'); el.classList.add('on');
     });
+    document.querySelectorAll('.letter-reveal .lr-letter').forEach(el=> el.style.opacity=1);
+    document.querySelectorAll('.letter-reveal').forEach(el=> el.classList.add('dot-live'));
     return;
   }
   gsap.registerPlugin(ScrollTrigger);
@@ -95,6 +106,23 @@ function start(){
       trigger: el, start:'top 88%',
       onEnter: ()=> setTimeout(()=> el.classList.add('in'), i*140)
     });
+  });
+
+  /* Letter reveal: si es .on-load anima de inmediato (hero), si no, al entrar en foco */
+  document.querySelectorAll('.letter-reveal').forEach(el=>{
+    const letters = el.querySelectorAll('.lr-letter');
+    const anim = ()=>{
+      gsap.to(letters, {
+        opacity:1, y:0, duration:.7, stagger:0.045, ease:'power3.out',
+        onComplete: ()=> el.classList.add('dot-live')
+      });
+    };
+    if(el.classList.contains('on-load')){
+      gsap.set(letters, {y:'0.5em'});
+      setTimeout(anim, 200);
+    } else {
+      ScrollTrigger.create({ trigger: el, start:'top 82%', onEnter: anim });
+    }
   });
 
   /* Barras (benchmark + presupuesto): animan su ancho real al entrar en foco */

@@ -293,3 +293,72 @@ body.pitch-body{ cursor:none; }
 
 /* Línea de condición dentro de cada escalón de la curva de precio */
 .price-step-condition{ margin-top:8px; font-size:11.5px; line-height:1.45; color:var(--ink-soft); max-width:22ch; margin-left:auto; margin-right:auto; }
+
+/* =========================================================
+   QUÉDATE — componentes de la campaña creativa Casa Filomeno
+   ========================================================= */
+
+/* Palabra gigante con reveal letra por letra (hero + cierre) */
+.quedate-word{ font-family:'Unbounded'; font-weight:800; color:#fff; text-align:center; line-height:1.15; padding-bottom:0.3em; }
+.quedate-word .lr-letter{ display:inline-block; vertical-align:top; opacity:0; transform:translateY(.5em); }
+.quedate-word .lr-letter.is-dot{ color:var(--pink); }
+.quedate-word.dot-live .lr-letter.is-dot{ animation:dot-pulse 2.2s ease-in-out infinite; }
+@keyframes dot-pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.35); } }
+
+/* No decimos / Decimos */
+.say-pairs{ margin-top:min(6vh,48px); display:flex; flex-direction:column; }
+.say-pair{ display:flex; flex-direction:column; gap:8px; padding:24px 0; border-bottom:1px solid var(--line); }
+.say-pair:last-child{ border-bottom:none; }
+.say-no{ font-size:15px; color:var(--ink-soft); opacity:.6; }
+.say-no::before{ content:'"'; } .say-no::after{ content:'"'; }
+.say-yes{ font-family:'Unbounded'; font-weight:700; font-size:clamp(22px,3.4vw,34px); color:var(--pink); }
+
+/* La promesa emocional: el día fluyendo */
+.promise-flow{ display:flex; flex-wrap:wrap; gap:8px 14px; margin-top:min(6vh,46px); align-items:baseline; }
+.promise-flow span{ font-size:16px; color:var(--ink-soft); }
+.promise-question{ margin-top:min(6vh,44px); font-family:'Unbounded'; font-weight:700; font-style:italic; font-size:clamp(24px,3.8vw,42px); color:var(--ink); }
+
+/* Chips de razones (ADR) */
+.reason-chips{ display:flex; flex-wrap:wrap; gap:10px; margin-top:min(5vh,40px); }
+.reason-chips span{ font-size:12px; letter-spacing:.06em; text-transform:uppercase; font-weight:600; color:var(--ink); border:1px solid var(--line); padding:9px 16px; border-radius:100px; }
+
+/* Territorio creativo: 6 tarjetas "Quédate a..." */
+.territory-grid{ display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:min(6vh,50px); }
+@media(min-width:700px){ .territory-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1000px){ .territory-grid{ grid-template-columns:repeat(3,1fr); } }
+.territory-card{ background:var(--bg); padding:30px 26px; min-height:210px; transition:background .3s var(--ease); }
+.territory-card:hover{ background:rgba(168,90,116,.08); }
+.territory-title{ font-family:'Unbounded'; font-weight:800; font-size:19px; color:var(--pink); margin-bottom:18px; }
+.mood-list{ display:flex; flex-direction:column; gap:7px; }
+.mood-list span{ font-size:14px; color:var(--ink-soft); }
+
+/* Lenguaje visual: lo que no / lo que sí */
+.vlang-no{ display:flex; flex-wrap:wrap; gap:10px; margin-top:min(5vh,40px); }
+.vlang-no span{ font-size:12.5px; color:var(--ink-soft); opacity:.5; text-decoration:line-through; border:1px solid var(--line); padding:7px 14px; border-radius:100px; }
+.vlang-yes-list{ margin-top:min(6vh,46px); display:flex; flex-direction:column; gap:11px; max-width:64ch; }
+.vlang-yes-list p{ font-size:15.5px; font-style:italic; color:var(--ink); line-height:1.5; }
+
+/* Mini mapa del sitio futuro */
+.sitemap-grid{ display:grid; grid-template-columns:1fr; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:min(6vh,50px); }
+@media(min-width:700px){ .sitemap-grid{ grid-template-columns:repeat(2,1fr); } }
+@media(min-width:1000px){ .sitemap-grid{ grid-template-columns:repeat(3,1fr); } }
+.sitemap-card{ background:var(--bg); padding:26px 24px; transition:background .3s var(--ease); }
+.sitemap-card:hover{ background:rgba(168,90,116,.1); }
+.sitemap-tag{ font-size:10.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink-soft); }
+.sitemap-headline{ font-family:'Unbounded'; font-weight:800; font-size:19px; color:var(--ink); margin:10px 0 10px; }
+.sitemap-card p{ font-size:13px; line-height:1.55; color:var(--ink-soft); }
+
+/* Objetivo de negocio: categorías, no cifras inventadas */
+.outcomes-row{ display:flex; flex-wrap:wrap; gap:12px; margin-top:min(6vh,46px); }
+.outcome-chip{ padding:13px 20px; border:1px solid var(--line); border-radius:100px; font-family:'Unbounded'; font-weight:700; font-size:12.5px; text-transform:uppercase; letter-spacing:.03em; color:var(--ink); }
+
+/* Experiencias nombradas */
+.exp-list{ display:flex; flex-direction:column; gap:1px; background:var(--line); border:1px solid var(--line); margin-top:min(6vh,48px); }
+.exp-row{ background:var(--bg); padding:18px 22px; display:flex; justify-content:space-between; align-items:baseline; gap:16px; flex-wrap:wrap; }
+.exp-name{ font-family:'Unbounded'; font-weight:700; font-size:15px; color:var(--pink); }
+.exp-desc{ font-size:14px; color:var(--ink-soft); }
+
+/* El test final: escalando */
+.final-test{ display:flex; flex-direction:column; align-items:center; gap:24px; text-align:center; margin-top:min(6vh,42px); }
+.final-test .weak{ font-size:16px; color:var(--ink-soft); text-decoration:line-through; opacity:.45; }
+.final-test .strong-line{ font-family:'Unbounded'; font-weight:800; font-size:clamp(28px,4.6vw,50px); color:var(--pink); }
