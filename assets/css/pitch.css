@@ -301,6 +301,7 @@ body.pitch-body{ cursor:none; }
 /* Palabra gigante con reveal letra por letra (hero + cierre) */
 .quedate-word{ font-family:'Unbounded'; font-weight:800; color:#fff; text-align:center; line-height:1.15; padding-bottom:0.3em; }
 .quedate-word .lr-letter{ display:inline-block; vertical-align:top; opacity:0; transform:translateY(.5em); }
+.quedate-word .lr-word{ display:inline-block; white-space:nowrap; }
 .quedate-word .lr-letter.is-dot{ color:var(--pink); }
 .quedate-word.dot-live .lr-letter.is-dot{ animation:dot-pulse 2.2s ease-in-out infinite; }
 @keyframes dot-pulse{ 0%,100%{ transform:scale(1); } 50%{ transform:scale(1.35); } }

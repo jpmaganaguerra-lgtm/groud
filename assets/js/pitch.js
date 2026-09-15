@@ -75,13 +75,16 @@ document.querySelectorAll('.ph-pattern[data-pattern]').forEach(c=>{
   paintPattern(c, parseInt(c.getAttribute('data-pattern')));
 });
 
-/* ---------- LETTER REVEAL: divide el texto en letras para animarlas una por una ---------- */
+/* ---------- LETTER REVEAL: divide el texto en letras (agrupadas por palabra, para que el salto de línea siga respetando espacios) ---------- */
 document.querySelectorAll('.letter-reveal').forEach(el=>{
   const text = el.textContent;
-  el.innerHTML = text.split('').map(ch=>{
-    const cls = ch === '.' ? 'lr-letter is-dot' : 'lr-letter';
-    return `<span class="${cls}">${ch === ' ' ? '&nbsp;' : ch}</span>`;
-  }).join('');
+  el.innerHTML = text.split(' ').map(word=>{
+    const letters = word.split('').map(ch=>{
+      const cls = ch === '.' ? 'lr-letter is-dot' : 'lr-letter';
+      return `<span class="${cls}">${ch}</span>`;
+    }).join('');
+    return `<span class="lr-word">${letters}</span>`;
+  }).join(' ');
 });
 
 /* ---------- REVEAL ENGINE (GSAP + ScrollTrigger, igual motor que el sitio) ---------- */
