@@ -326,7 +326,6 @@
         </div>
       </div>
 
-      <div class="budget-total reveal">$70,000 MXN / mes</div>
       <p class="pitch-lede reveal">Estamos construyendo la nueva percepción de Casa Filomeno y convirtiéndola en demanda. La inversión contempla 5 capacidades:</p>
 
       <div class="mech-list reveal" data-stagger>
@@ -349,10 +348,11 @@
   <section class="pitch-section theme-light">
     <div class="wrap">
       <div class="pitch-head">
-        <div class="eyebrow reveal"><i></i>15 — Inversión + mínimos indispensables</div>
+        <div class="eyebrow reveal"><i></i>15 — Mínimos indispensables</div>
         <div class="disp reveal">Una base constante, no una fábrica de publicaciones</div>
       </div>
 
+      <p class="pitch-lede reveal" style="margin-top:min(6vh,46px); font-weight:700; color:var(--ink); text-transform:uppercase; letter-spacing:.04em; font-size:13px;">Mínimos indispensables</p>
       <ul class="pitch-list reveal" data-stagger>
         <li><i></i><span><b style="color:var(--ink);">8</b> publicaciones estáticas / carruseles al mes</span></li>
         <li><i></i><span><b style="color:var(--ink);">4</b> reels al mes</span></li>
@@ -363,33 +363,42 @@
         <li><i></i><span>Medición, optimización y dirección estratégica mensual</span></li>
       </ul>
 
-      <p class="pitch-lede reveal" style="margin-top:min(7vh,54px);">Distribución de la inversión:</p>
+      <p class="pitch-lede reveal" style="margin-top:min(7vh,54px);">Distribución de presupuesto</p>
+      <div class="budget-total is-live reveal"><span data-budget-total>$50,000 MXN / mes</span><span class="budget-total-hint">Arrastra las barras para ajustar</span></div>
+
       <div class="budget-bars reveal">
-        <div class="budget-row">
+        <div class="budget-row is-slider" data-min="15000" data-max="30000" data-val="15000">
           <div class="budget-row-head"><span class="budget-name">Estrategia + dirección creativa</span><span class="budget-amount">$15,000</span></div>
-          <div class="budget-track"><div class="budget-fill" data-pct="21.4"></div></div>
+          <div class="budget-track"><div class="budget-fill" style="width:0%"></div><div class="budget-handle" style="left:0%"></div></div>
+          <span class="budget-range">Mínimo $15,000 · hasta $30,000</span>
         </div>
-        <div class="budget-row">
-          <div class="budget-row-head"><span class="budget-name">Producción de contenido</span><span class="budget-amount">$25,000</span></div>
-          <div class="budget-track"><div class="budget-fill" data-pct="35.7"></div></div>
+        <div class="budget-row is-slider" data-min="15000" data-max="35000" data-val="15000">
+          <div class="budget-row-head"><span class="budget-name">Producción de contenido (UGC)</span><span class="budget-amount">$15,000</span></div>
+          <div class="budget-track"><div class="budget-fill" style="width:0%"></div><div class="budget-handle" style="left:0%"></div></div>
+          <span class="budget-range">Mínimo $15,000 · hasta $35,000</span>
         </div>
-        <div class="budget-row">
-          <div class="budget-row-head"><span class="budget-name">Web + contenido editorial / SEO</span><span class="budget-amount">$7,500</span></div>
-          <div class="budget-track"><div class="budget-fill" data-pct="10.7"></div></div>
+        <div class="budget-row is-slider" data-min="2000" data-max="8000" data-val="2000">
+          <div class="budget-row-head"><span class="budget-name">Web + contenido editorial / SEO</span><span class="budget-amount">$2,000</span></div>
+          <div class="budget-track"><div class="budget-fill" style="width:0%"></div><div class="budget-handle" style="left:0%"></div></div>
+          <span class="budget-range">Mínimo $2,000 · hasta $8,000</span>
         </div>
-        <div class="budget-row">
-          <div class="budget-row-head"><span class="budget-name">Community + Stories</span><span class="budget-amount">$7,500</span></div>
-          <div class="budget-track"><div class="budget-fill" data-pct="10.7"></div></div>
+        <div class="budget-row is-slider" data-min="3000" data-max="10000" data-val="3000">
+          <div class="budget-row-head"><span class="budget-name">Community + Stories</span><span class="budget-amount">$3,000</span></div>
+          <div class="budget-track"><div class="budget-fill" style="width:0%"></div><div class="budget-handle" style="left:0%"></div></div>
+          <span class="budget-range">Mínimo $3,000 · hasta $10,000</span>
         </div>
-        <div class="budget-row">
-          <div class="budget-row-head"><span class="budget-name">Pauta digital</span><span class="budget-amount">$5,000</span></div>
-          <div class="budget-track"><div class="budget-fill" data-pct="7.1"></div></div>
+        <div class="budget-row is-slider" data-min="5000" data-max="20000" data-val="5000">
+          <div class="budget-row-head"><span class="budget-name">Pauta Digital</span><span class="budget-amount">$5,000</span></div>
+          <div class="budget-track"><div class="budget-fill" style="width:0%"></div><div class="budget-handle" style="left:0%"></div></div>
+          <span class="budget-range">Mínimo $5,000 · hasta $20,000</span>
         </div>
-        <div class="budget-row">
+        <div class="budget-row is-slider" data-min="10000" data-max="20000" data-val="10000">
           <div class="budget-row-head"><span class="budget-name">Medición + optimización</span><span class="budget-amount">$10,000</span></div>
-          <div class="budget-track"><div class="budget-fill" data-pct="14.3"></div></div>
+          <div class="budget-track"><div class="budget-fill" style="width:0%"></div><div class="budget-handle" style="left:0%"></div></div>
+          <span class="budget-range">Mínimo $10,000 · hasta $20,000</span>
         </div>
       </div>
+      <p class="budget-drag-hint reveal">← Arrastra cada círculo para ajustar el presupuesto de esa línea →</p>
 
       <div class="pitch-insight reveal" style="margin-top:min(6vh,46px);">
         <b>Estos son mínimos indispensables, no un límite de producción.</b> La mezcla podrá aumentar o cambiar dependiendo de campañas, temporadas y prioridades comerciales.
