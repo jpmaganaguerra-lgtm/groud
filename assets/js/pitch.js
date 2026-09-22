@@ -112,7 +112,9 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
     const amountEl = row.querySelector('.budget-amount');
 
     function render(){
-      const pct = ((val - min) / (max - min)) * 100;
+      // La barra representa la escala completa 0–$50,000 (misma escala en las 6),
+      // el mínimo es solo un piso que no se puede cruzar al arrastrar.
+      const pct = (val / max) * 100;
       fill.style.width = pct + '%';
       handle.style.left = pct + '%';
       amountEl.textContent = fmt(val);
@@ -124,7 +126,7 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
       const rect = track.getBoundingClientRect();
       let frac = (clientX - rect.left) / rect.width;
       frac = Math.max(0, Math.min(1, frac));
-      let raw = min + frac * (max - min);
+      let raw = frac * max;
       raw = Math.round(raw / 500) * 500;
       val = Math.max(min, Math.min(max, raw));
       render();
