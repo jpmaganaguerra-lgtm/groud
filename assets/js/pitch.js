@@ -87,6 +87,71 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
   }).join(' ');
 });
 
+/* ---------- BUDGET SLIDERS: barras de presupuesto arrastrables con total en vivo ---------- */
+(function initBudgetSliders(){
+  const rows = document.querySelectorAll('.budget-row.is-slider');
+  if(!rows.length) return;
+
+  function fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
+
+  function updateTotal(){
+    const totalEl = document.querySelector('[data-budget-total]');
+    if(!totalEl) return;
+    let sum = 0;
+    rows.forEach(r => sum += parseInt(r.getAttribute('data-val'), 10));
+    totalEl.textContent = fmt(sum) + ' MXN / mes';
+  }
+
+  rows.forEach(row=>{
+    const min = parseInt(row.getAttribute('data-min'), 10);
+    const max = parseInt(row.getAttribute('data-max'), 10);
+    let val = parseInt(row.getAttribute('data-val') || min, 10);
+    const track = row.querySelector('.budget-track');
+    const fill = row.querySelector('.budget-fill');
+    const handle = row.querySelector('.budget-handle');
+    const amountEl = row.querySelector('.budget-amount');
+
+    function render(){
+      const pct = ((val - min) / (max - min)) * 100;
+      fill.style.width = pct + '%';
+      handle.style.left = pct + '%';
+      amountEl.textContent = fmt(val);
+      row.setAttribute('data-val', val);
+    }
+    render();
+
+    function setFromClientX(clientX){
+      const rect = track.getBoundingClientRect();
+      let frac = (clientX - rect.left) / rect.width;
+      frac = Math.max(0, Math.min(1, frac));
+      let raw = min + frac * (max - min);
+      raw = Math.round(raw / 500) * 500;
+      val = Math.max(min, Math.min(max, raw));
+      render();
+      updateTotal();
+    }
+
+    let dragging = false;
+    handle.addEventListener('pointerdown', e=>{
+      dragging = true;
+      row.classList.add('is-dragging');
+      handle.setPointerCapture(e.pointerId);
+      setFromClientX(e.clientX);
+    });
+    handle.addEventListener('pointermove', e=>{ if(dragging) setFromClientX(e.clientX); });
+    function endDrag(){ dragging = false; row.classList.remove('is-dragging'); }
+    handle.addEventListener('pointerup', endDrag);
+    handle.addEventListener('pointercancel', endDrag);
+
+    track.addEventListener('pointerdown', e=>{
+      if(e.target === handle) return;
+      setFromClientX(e.clientX);
+    });
+  });
+
+  updateTotal();
+})();
+
 /* ---------- REVEAL ENGINE (GSAP + ScrollTrigger, igual motor que el sitio) ---------- */
 function start(){
   if(typeof gsap === 'undefined'){
@@ -128,8 +193,10 @@ function start(){
     }
   });
 
-  /* Barras (benchmark + presupuesto): animan su ancho real al entrar en foco */
+  /* Barras (benchmark + presupuesto): animan su ancho real al entrar en foco.
+     Las barras interactivas (.is-slider) quedan fuera: su ancho lo controla el arrastre. */
   document.querySelectorAll('.bar-fill, .budget-fill').forEach(el=>{
+    if(el.closest('.budget-row.is-slider')) return;
     const pct = el.getAttribute('data-pct') || '0';
     ScrollTrigger.create({
       trigger: el, start:'top 90%',
