@@ -105,6 +105,7 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
   rows.forEach(row=>{
     const min = parseInt(row.getAttribute('data-min'), 10);
     const max = parseInt(row.getAttribute('data-max'), 10);
+    const step = parseInt(row.getAttribute('data-step') || 500, 10);
     let val = parseInt(row.getAttribute('data-val') || min, 10);
     const track = row.querySelector('.budget-track');
     const fill = row.querySelector('.budget-fill');
@@ -127,7 +128,7 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
       let frac = (clientX - rect.left) / rect.width;
       frac = Math.max(0, Math.min(1, frac));
       let raw = frac * max;
-      raw = Math.round(raw / 500) * 500;
+      raw = Math.round(raw / step) * step;   // incremento configurable con data-step (default $500)
       val = Math.max(min, Math.min(max, raw));
       render();
       updateTotal();
