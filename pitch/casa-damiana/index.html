@@ -11,6 +11,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@200;300;400;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../../assets/css/style.css">
 <link rel="stylesheet" href="../../assets/css/pitch.css">
+<style>
+/* Tira de referencias de feeling (local a este pitch) */
+.mood-strip{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; margin-top:min(5vh,40px); }
+.mood-strip figure{ margin:0; aspect-ratio:3/4; overflow:hidden; background:var(--line); position:relative; }
+.mood-strip img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+@media (max-width:720px){
+  .mood-strip{ grid-template-columns:repeat(2,1fr); gap:10px; }
+  .mood-strip figure:last-child{ grid-column:span 2; aspect-ratio:16/10; }
+}
+</style>
 </head>
 <body class="pitch-body">
 
@@ -150,6 +160,15 @@
         <div class="disp reveal">Baja decide cómo se siente la casa</div>
         <p class="pitch-lede reveal">The Baja Muse no es un lema. Es el criterio con el que se decide la arquitectura, el contenido, el servicio y la manera de contar la propiedad.</p>
       </div>
+
+      <div class="mood-strip reveal">
+        <figure><img data-src="img/ref-1-atardecer.jpg" alt=""></figure>
+        <figure><img data-src="img/ref-2-amapolas.jpg" alt=""></figure>
+        <figure><img data-src="img/ref-3-baja-vintage.jpg" alt=""></figure>
+        <figure><img data-src="img/ref-4-muro-adobe.jpg" alt=""></figure>
+        <figure><img data-src="img/ref-5-nopal-coral.jpg" alt=""></figure>
+      </div>
+      <p class="pitch-rule reveal">Referencias de feeling: luz baja, escala, color quemado y materia real. La fotografía final será de la propia Baja.</p>
 
       <div class="territory-grid" data-stagger>
         <div class="territory-card">
