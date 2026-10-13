@@ -9,10 +9,6 @@ Reemplaza el archivo respetando el mismo nombre, no hay que tocar el HTML.
   habitación, alguien todavía en la cama) — no una foto de catálogo del
   edificio. Horizontal, mínimo 1800px de ancho.
 
-- `onemorenight.jpg` — foto de fondo de la sección "One More Night".
-  Recomendado: una maleta, una habitación, la luz de la tarde — el momento
-  justo antes de irse. Si no existe, esa sección usa el fondo de color de
-  marca (no se rompe nada).
 
 - `positioning.webp` — foto de fondo de la sección "04 — The Positioning"
   ("Ser el hotel del que no te quieres ir."). Actualmente es la foto del
