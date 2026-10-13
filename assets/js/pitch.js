@@ -89,7 +89,7 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
 
 /* ---------- BUDGET SLIDERS: barras de presupuesto arrastrables con total en vivo ---------- */
 (function initBudgetSliders(){
-  const rows = document.querySelectorAll('.budget-row.is-slider');
+  const rows = document.querySelectorAll('.budget-row.is-slider, .budget-row.is-fixed');
   if(!rows.length) return;
 
   function fmt(n){ return '$' + Math.round(n).toLocaleString('en-US'); }
@@ -105,12 +105,16 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
   rows.forEach(row=>{
     const min = parseInt(row.getAttribute('data-min'), 10);
     const max = parseInt(row.getAttribute('data-max'), 10);
-    const step = parseInt(row.getAttribute('data-step') || 500, 10);
     let val = parseInt(row.getAttribute('data-val') || min, 10);
     const track = row.querySelector('.budget-track');
     const fill = row.querySelector('.budget-fill');
     const handle = row.querySelector('.budget-handle');
     const amountEl = row.querySelector('.budget-amount');
+    if(row.classList.contains('is-fixed')){
+      // Barra fija: no se arrastra, pero sigue sumando al total en vivo.
+      fill.style.width = (val / max * 100) + '%';
+      return;
+    }
 
     function render(){
       // La barra representa la escala completa 0–$50,000 (misma escala en las 6),
@@ -128,7 +132,7 @@ document.querySelectorAll('.letter-reveal').forEach(el=>{
       let frac = (clientX - rect.left) / rect.width;
       frac = Math.max(0, Math.min(1, frac));
       let raw = frac * max;
-      raw = Math.round(raw / step) * step;   // incremento configurable con data-step (default $500)
+      raw = Math.round(raw / 500) * 500;
       val = Math.max(min, Math.min(max, raw));
       render();
       updateTotal();
@@ -199,7 +203,7 @@ function start(){
   /* Barras (benchmark + presupuesto): animan su ancho real al entrar en foco.
      Las barras interactivas (.is-slider) quedan fuera: su ancho lo controla el arrastre. */
   document.querySelectorAll('.bar-fill, .budget-fill').forEach(el=>{
-    if(el.closest('.budget-row.is-slider')) return;
+    if(el.closest('.budget-row.is-slider, .budget-row.is-fixed')) return;
     const pct = el.getAttribute('data-pct') || '0';
     ScrollTrigger.create({
       trigger: el, start:'top 90%',

@@ -162,6 +162,7 @@ body.pitch-body{ cursor:none; }
 .budget-total.is-live{ display:flex; align-items:baseline; gap:12px; flex-wrap:wrap; }
 .budget-total-hint{ font-family:'Space Grotesk'; font-weight:500; font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink-soft); }
 .budget-row.is-slider .budget-track{ overflow:visible; position:relative; cursor:pointer; transition:background .2s; }
+.budget-row.is-fixed .budget-fill{ opacity:.55; }
 .budget-row.is-slider .budget-fill{ transition:width .05s linear; }
 .budget-row.is-slider.is-dragging .budget-fill{ transition:none; }
 .budget-handle{
